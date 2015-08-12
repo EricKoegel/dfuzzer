@@ -25,7 +25,7 @@
 #include <time.h>
 
 #include "rand.h"
-
+#include "unsafe-strings.h"
 
 /** Maximum buffer size for generated strings (in Bytes) */
 static long df_buf_size;
@@ -48,27 +48,6 @@ static unsigned short df_gdouf;
 /** Length of  pseudo-random strings */
 static long df_str_len;
 
-/**
-	Array of strings, which will be send to tested process if it has any string
-	parameters. Feel free to include any strings here (only valid UTF-8).
-	Array must be terminated by NULL string.
-*/
-static const char *df_str_def[] = {
-	"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-	/*
-	"%s%s%s%s%s%s%s%s%s%n%s%n%n%n%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s",
-	"%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n"
-	"%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n%n",
-	"bomb(){ bomb|bomb & }; bomb",
-	":1.285",
-	"org.freedesktop.foo",
-	"/org/freedesktop/foo",
-	"rm -rf /",
-	"rm -f *",
-	"rm -rf ~/",
-	 */
-	NULL
-};
 
 /** Index into df_str_def array for function df_rand_string() */
 static unsigned df_index_str;
